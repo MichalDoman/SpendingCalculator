@@ -35,7 +35,7 @@ class HomeListView(ListView):
                 queryset = queryset.filter(item__icontains=key_phrase) | queryset.filter(producer__icontains=key_phrase)
 
             if price:
-                queryset = queryset | queryset.filter(price__gte=price)
+                queryset = queryset.filter(price__gte=price)
 
             if rooms:
                 temp_queryset = queryset.filter(room=int(rooms[0]))
@@ -64,7 +64,7 @@ class HomeListView(ListView):
         # Get sorting url to keep filters:
         if self.request.method == 'GET':
             key_phrase = self.request.GET.get('key_phrase', '')
-            price = self.request.GET.get('price', 0)
+            price = self.request.GET.get('price', '')
             rooms = self.request.GET.getlist('room', [])
 
             filter_url = f"{self.request.path}?key_phrase={key_phrase}&price={price}"
