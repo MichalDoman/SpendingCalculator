@@ -23,11 +23,33 @@ class HomeListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        form = self.form_class(self.request.GET)
+        if form.is_valid():
+            key_phrase = form.cleaned_data['key_phrase']
+            price = form.cleaned_data['price']
+            room = form.cleaned_data['room']
+
+            if key_phrase:
+                queryset = queryset.filter(item__icontains=key_phrase) | queryset.filter(producer__icontains=key_phrase)
+
+            if price:
+                queryset = queryset.filter(price__gte=price)
+
+            if room:
+                queryset = queryset.filter(room=int(room[0]))
+
         return queryset.select_related('room')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.form_class(self.request.GET)
+        queryset = self.get_queryset()
+
+        total = 0
+        for purchase in queryset:
+            total += purchase.price
+        context['total'] = round(total, 2)
+
         return context
 
 

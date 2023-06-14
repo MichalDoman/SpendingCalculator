@@ -101,10 +101,10 @@ input::-webkit-inner-spin-button {
 
 .total {
     line-height: 1;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     background-color: var(--grey_2);
-    border: 3px solid var(--color_2);
+    border: 3px solid var(--grey_3);
     border-radius: 10px;
     padding: 10px;
 }
@@ -182,6 +182,7 @@ input::-webkit-inner-spin-button {
 
 .list-table tr {
     border-bottom: 3px solid var(--grey_2);
+    height: 50px;
 }
 
 .list-table th,
@@ -200,7 +201,6 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    height: 30px;
 }
 
 .sort-arrows-box {
