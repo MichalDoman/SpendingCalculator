@@ -27,16 +27,20 @@ class HomeListView(ListView):
         if form.is_valid():
             key_phrase = form.cleaned_data['key_phrase']
             price = form.cleaned_data['price']
-            room = form.cleaned_data['room']
+            rooms = form.cleaned_data['room']
 
             if key_phrase:
                 queryset = queryset.filter(item__icontains=key_phrase) | queryset.filter(producer__icontains=key_phrase)
 
             if price:
-                queryset = queryset.filter(price__gte=price)
+                queryset = queryset | queryset.filter(price__gte=price)
 
-            if room:
-                queryset = queryset.filter(room=int(room[0]))
+            if rooms:
+                temp_queryset = queryset.filter(room=int(rooms[0]))
+                if len(rooms) > 1:
+                    for room in rooms[1:]:
+                        temp_queryset = temp_queryset | queryset.filter(room=int(room))
+                queryset = temp_queryset
 
         return queryset.select_related('room')
 
