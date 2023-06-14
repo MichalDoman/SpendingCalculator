@@ -178,11 +178,12 @@ input::-webkit-inner-spin-button {
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
+    width: 100%;
 }
 
 .list-table tr {
     border-bottom: 3px solid var(--grey_2);
-    height: 50px;
+    height: 77px;
 }
 
 .list-table th,
