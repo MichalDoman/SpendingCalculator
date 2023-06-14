@@ -21,23 +21,10 @@
                         <div class="th-box">
                             <span>Item Name</span>
                             <div class="sort-arrows-box">
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=item">
                                     <i class="material-icons sort-icon">arrow_drop_up</i>
                                 </a>
-                                <a href="">
-                                    <i class="material-icons sort-icon">arrow_drop_down</i>
-                                </a>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="th-box">
-                            <span>Price</span>
-                            <div class="sort-arrows-box">
-                                <a href="">
-                                    <i class="material-icons sort-icon">arrow_drop_up</i>
-                                </a>
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=-item">
                                     <i class="material-icons sort-icon">arrow_drop_down</i>
                                 </a>
                             </div>
@@ -47,10 +34,23 @@
                         <div class="th-box">
                             <span>Producer</span>
                             <div class="sort-arrows-box">
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=producer">
                                     <i class="material-icons sort-icon">arrow_drop_up</i>
                                 </a>
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=-producer">
+                                    <i class="material-icons sort-icon">arrow_drop_down</i>
+                                </a>
+                            </div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="th-box">
+                            <span>Price</span>
+                            <div class="sort-arrows-box">
+                                <a href="{{ filter_url }}&sort_by=-price">
+                                    <i class="material-icons sort-icon">arrow_drop_up</i>
+                                </a>
+                                <a href="{{ filter_url }}&sort_by=price">
                                     <i class="material-icons sort-icon">arrow_drop_down</i>
                                 </a>
                             </div>
@@ -60,10 +60,10 @@
                         <div class="th-box">
                             <span>Room</span>
                             <div class="sort-arrows-box">
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=room">
                                     <i class="material-icons sort-icon">arrow_drop_up</i>
                                 </a>
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=-room">
                                     <i class="material-icons sort-icon">arrow_drop_down</i>
                                 </a>
                             </div>
@@ -73,10 +73,10 @@
                         <div class="th-box">
                             <span>Date of Purchase</span>
                             <div class="sort-arrows-box">
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=date">
                                     <i class="material-icons sort-icon">arrow_drop_up</i>
                                 </a>
-                                <a href="">
+                                <a href="{{ filter_url }}&sort_by=-date">
                                     <i class="material-icons sort-icon">arrow_drop_down</i>
                                 </a>
                             </div>
@@ -90,6 +90,10 @@
                         <td>{{ item.price }}</td>
                         <td>{{ item.room }}</td>
                         <td>{{ item.date }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">There are no items added or matching filters!</td>
                     </tr>
                 {% endfor %}
             </table>
