@@ -97,6 +97,7 @@ input::-webkit-inner-spin-button {
     border: 5px solid var(--color_2);
     border-radius: 10px;
     padding: 30px;
+    height: 565px;
 }
 
 .total {
