@@ -85,7 +85,7 @@ class HomeListView(ListView):
 
 
 class AddItemView(CreateView):
-    """Generic view for adding purchases to the model"""
+    """Generic view for adding purchases to the model."""
     model = Purchase
     template_name_suffix = "_add"
     fields = ["item", "producer", "price", "room", "date"]
