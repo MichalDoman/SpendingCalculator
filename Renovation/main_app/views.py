@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, FormView
 from django.urls import reverse_lazy
 from django import forms
 from django.core.validators import MinValueValidator
@@ -90,3 +90,8 @@ class AddItemView(CreateView):
     template_name_suffix = "_add"
     fields = ["item", "producer", "price", "room", "date"]
     success_url = reverse_lazy("home")
+
+
+class RegisterView(FormView):
+    pass
+
