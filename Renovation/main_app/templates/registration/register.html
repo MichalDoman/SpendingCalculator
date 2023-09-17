@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+    <div>
+        <form method="POST">
+            <label>
+                E-mail:
+                <input type="email" name="email">
+            </label>
+            <label>
+                Password:
+                <input type="password" name="password">
+            </label>
+            <label>
+                Repeat password:
+                <input type="password" name="repeated_password">
+            </label>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}

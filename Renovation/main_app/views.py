@@ -1,22 +1,10 @@
 from django.views.generic import ListView, CreateView, FormView
 from django.urls import reverse_lazy
-from django import forms
-from django.core.validators import MinValueValidator
 
-from main_app.models import Purchase, Room
+from main_app.forms import HomeListFilterForm, RegisterForm
+from main_app.models import Purchase
 
 SORTING_NAMES = ["item", "-item", "price", "-price", "producer", "-producer", "room", "-room", "date", "-date"]
-
-
-class HomeListFilterForm(forms.Form):
-    """A form used to filter purchases list"""
-    key_phrase = forms.CharField(max_length=256, required=False)
-    price = forms.FloatField(validators=[MinValueValidator(0)], required=False)
-    room = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple(), required=False)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['room'].choices = [(room.pk, room.name) for room in Room.objects.all()]
 
 
 class HomeListView(ListView):
@@ -93,5 +81,6 @@ class AddItemView(CreateView):
 
 
 class RegisterView(FormView):
-    pass
+    """A View that enables users to register via a form, and access all functionalities."""
+    form_class = RegisterForm
 
