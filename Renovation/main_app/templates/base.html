@@ -23,6 +23,18 @@
                     <i class="material-icons">post_add</i>
                 </a>
             </li>
+            {% if not request.user.is_authenticated %}
+                <li>
+                    <a href="{% url "login" %}">
+                        <span>Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "register" %}">
+                        <span>register</span>
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
 
